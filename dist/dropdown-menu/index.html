@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dropdown-menu</title>
+</head>
+
+<body>
+  <main>
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-list-unit"><a href="#" class="nav-list-unit-link">リンク</a></li>
+        <li class="nav-list-unit"><a href="#" class="nav-list-unit-link">リンク</a></li>
+        <li class="nav-list-unit"><a href="#" class="nav-list-unit-link">リンク</a></li>
+        <li class="nav-list-unit">
+          <a href="javascript:void(0)" class="dropdown-btn">ボタン</a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-menu-unit"><a href="#" class="dropdown-menu-unit-link">メニュー1</a></li>
+            <li class="dropdown-menu-unit"><a href="#" class="dropdown-menu-unit-link">メニュー2</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </main>
+  <style>
+    /* reset */
+    a {
+      text-decoration: none;
+    }
+
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* main */
+    .nav-list {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-start;
+    }
+
+    .nav-list-unit {
+      text-align: center;
+    }
+
+    .nav-list-unit-link,
+    .dropdown-btn,
+    .dropdown-menu-unit-link {
+      display: inline-block;
+      padding: 1em 0;
+      color: #272343;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .dropdown-btn,
+    .dropdown-menu {
+      position: relative;
+    }
+
+    .dropdown-btn {
+      width: 3em;
+      transition: width 0.3s ease-out;
+      z-index: 2;
+    }
+
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .dropdown-menu-unit-link {
+      width: 140px;
+      background-color: #94a1b2;
+    }
+
+    /* .dropdown-menu.is-active, */
+    .nav-list-unit:hover .dropdown-menu {
+      display: flex;
+    }
+
+
+    .nav-list-unit:hover .dropdown-btn {
+      width: 140px;
+      background-color: #bae8e8;
+    }
+
+    .dropdown-menu-unit-link:hover {
+      background-color: #ffd803;
+    }
+
+
+    .nav-list-unit:hover .dropdown-menu {
+      animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) 1 forwards;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-48px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+
+      40%,
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</body>
+
+</html>
