@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dropdown-menu</title>
+</head>
+
+<body>
+  <main>
+  </main>
+  <div id="float-area">
+    <a href="#" class="float-regist">新規登録</a>
+    <a href="#" class="float-login">ログイン</a>
+  </div>
+  <style>
+    /* reset */
+    a {
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    /* main */
+    main {
+      height: 300vh;
+      background-color: #94a1b2;
+    }
+
+    #float-area {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      padding: 0.5em 0;
+      background-color: #ffffff;
+      transition: transform 0.3s linear;
+      transform: translateY(48px);
+    }
+
+    #float-area.is-active {
+      transform: translateY(0);
+    }
+  </style>
+
+  <script>
+    var winHeigth = window.innerHeight;
+    var posRate = 0.2
+    var floatElm = document.getElementById("float-area");
+
+    var checkPosition = function () {
+      if (window.matchMedia(`(max-width: 900px)`).matches) {
+        if (winHeigth * posRate < window.scrollY) {
+          floatElm.classList.remove("is-active");
+        } else {
+          floatElm.classList.add("is-active");
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', checkPosition);
+    window.addEventListener('scroll', checkPosition);
+    window.addEventListener('resize', function () {
+      winHeigth = window.innerHeight;
+      checkPosition();
+    });
+  </script>
+</body>
+
+</html>
